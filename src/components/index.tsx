@@ -1,7 +1,5 @@
 import React from "react";
 
-function App() {
+export const ListContainer = () => {
   return <></>;
-}
-
-export default App;
+};
