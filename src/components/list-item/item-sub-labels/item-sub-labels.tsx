@@ -17,5 +17,7 @@ export const ItemSubLabels: React.FC<ItemSubLabelsProps> = ({
     return stringsArray.join(" - ");
   };
 
-  return <div className="list-item-sub-labels">{concatenatedStrings()}</div>;
+  const concatenatedSubLabels = concatenatedStrings();
+
+  return <div className="list-item-sub-labels">{concatenatedSubLabels}</div>;
 };
