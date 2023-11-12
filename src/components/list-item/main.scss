@@ -17,8 +17,23 @@
   &__copy {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+
+    &__title {
+      font-family: "League Spartan", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+    }
 
     &__labels {
+      display: flex;
+      font-family: "League Spartan", sans-serif;
+      color: hsl(180, 29%, 50%);
+    }
+
+    &__sub-labels {
+      font-family: "League Spartan", sans-serif;
+      color: hsl(180, 8%, 52%);
       display: flex;
     }
   }

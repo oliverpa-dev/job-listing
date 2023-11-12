@@ -1,6 +1,7 @@
 import React from "react";
 import "./main.scss";
 import { ItemFilters } from "./item-filters/item-filters";
+import { ItemSubLabels } from "./item-sub-labels/item-sub-labels";
 
 interface ListItemProps {
   data: Item[];
@@ -28,9 +29,6 @@ export const ListItem: React.FC<ListItemProps> = ({ data }) => {
       {data.map((el) => (
         <div className="list-item__wrapper">
           <div className="list-item__copy">
-            <div className="list-item__copy__image">
-              <img src={el.logo} alt="#" />
-            </div>
             <div className="list-item__copy__labels">
               <div className="list-item__copy__label">
                 {el.company}
@@ -40,9 +38,11 @@ export const ListItem: React.FC<ListItemProps> = ({ data }) => {
             </div>
             <div className="list-item__copy__title">{el.position}</div>
             <div className="list-item__copy__sub-labels">
-              {el.postedAt}
-              {el.contract}
-              {el.location}
+              <ItemSubLabels
+                postedAt={el.postedAt}
+                contract={el.contract}
+                location={el.location}
+              />
             </div>
           </div>
           <div className="list-item__filters">
