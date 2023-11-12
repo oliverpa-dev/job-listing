@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./item-filters.scss";
 
 interface ItemFiltersProps {
@@ -6,6 +6,7 @@ interface ItemFiltersProps {
   languages: string[];
   role: string;
   level: string;
+  onSelect: (clickedFilter: string) => void;
 }
 
 export const ItemFilters: React.FC<ItemFiltersProps> = ({
@@ -13,6 +14,7 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({
   languages,
   role,
   level,
+  onSelect,
 }) => {
   // Return array of tools, languages, role, and level
   const appendStrings = () => {
@@ -27,7 +29,7 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({
         <input
           type="button"
           value={filter}
-          onClick={() => console.log(filter)}
+          onClick={() => onSelect(filter)}
         ></input>
       ))}
     </div>
