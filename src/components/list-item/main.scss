@@ -1,0 +1,29 @@
+.list-item {
+  &__container {
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    border: 1px black solid;
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+
+    &__labels {
+      display: flex;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+  }
+}
