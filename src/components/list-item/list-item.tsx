@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./main.scss";
 import { ItemFilters } from "./item-filters/item-filters";
 import { ItemSubLabels } from "./item-sub-labels/item-sub-labels";
+import { Filter } from "../filtering";
 
 interface ListItemProps {
   data: Item[];
@@ -27,19 +28,32 @@ export const ListItem: React.FC<ListItemProps> = ({ data }) => {
   const [state, setState] = useState<string[]>([]);
 
   const handleOnClick = (clickedFilter: string) => {
-    if (state.length === 0) {
-      setState([clickedFilter]);
+    if (state.length !== 0) {
+      if (!state.includes(clickedFilter)) {
+        setState((prevState) => {
+          return [...prevState, clickedFilter];
+        });
+      }
     } else {
-      setState((prevState) => {
-        return [...prevState, clickedFilter];
-      });
+      setState([clickedFilter]);
     }
   };
 
-  console.log(state);
+  const handleOnRemove = (valueToRemove: string) => {
+    setState(state.filter((el) => el !== valueToRemove));
+  };
+
+  const handleOnClear = () => {
+    setState([]);
+  };
 
   return (
     <div className="list-item__container">
+      <Filter
+        filters={state}
+        onRemove={handleOnRemove}
+        onClear={handleOnClear}
+      />
       {data.map((item) => (
         <div className="list-item__wrapper">
           <div className="list-item__copy">
