@@ -1,0 +1,56 @@
+.list-item__filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  margin-top: 5rem;
+  font-family: "League Spartan", sans-serif;
+
+  &__copy {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__content {
+    background-color: hsl(180, 31%, 95%);
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+
+    span {
+      padding: 5px;
+      transform: translateY(7%);
+      font-weight: 500;
+      color: hsl(180, 29%, 50%);
+    }
+
+    button {
+      display: inline-block;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: hsl(180, 29%, 50%);
+      color: hsl(180, 31%, 95%);
+
+      &:hover {
+        background-color: #3e3e3e;
+      }
+    }
+  }
+
+  &__clear {
+    color: hsl(180, 29%, 50%);
+    cursor: pointer;
+    transition: border-bottom 0.3s ease-in-out;
+    border-bottom: 1px transparent solid;
+    padding-bottom: 2px;
+    font-weight: 700;
+
+    &:hover {
+      border-bottom: 1px hsl(180, 29%, 50%) solid;
+    }
+  }
+}

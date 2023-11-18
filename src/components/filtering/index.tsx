@@ -1,4 +1,5 @@
 import React from "react";
+import "./main.scss";
 
 interface FilterProps {
   filters: string[];
@@ -14,19 +15,23 @@ export const Filter: React.FC<FilterProps> = ({
   console.log(filters);
 
   return (
-    <div>
-      {filters.map((filter) => (
-        <div>
-          <span>{filter}</span>
-          <span
-            onClick={() => onRemove(filter)}
-            className="material-symbols-outlined"
-          >
-            close
-          </span>
-        </div>
-      ))}
-      <span onClick={() => onClear()}>Clear</span>
+    <div className="list-item__filter">
+      <div className="list-item__filter__copy">
+        {filters.map((filter) => (
+          <div className="list-item__filter__content">
+            <span>{filter}</span>
+            <button
+              onClick={() => onRemove(filter)}
+              className="material-symbols-outlined"
+            >
+              close
+            </button>
+          </div>
+        ))}
+      </div>
+      <span className="list-item__filter__clear" onClick={() => onClear()}>
+        Clear
+      </span>
     </div>
   );
 };
