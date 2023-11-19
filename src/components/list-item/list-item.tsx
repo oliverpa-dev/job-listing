@@ -25,35 +25,47 @@ interface Item {
 }
 
 export const ListItem: React.FC<ListItemProps> = ({ data }) => {
-  const [state, setState] = useState<string[]>([]);
-
+  const [filters, setFilters] = useState<string[]>([]);
+  
+  /**
+   * This function checks if the array is not empty
+   * @param clickedFilter - string value
+   */
   const handleOnClick = (clickedFilter: string) => {
-    if (state.length !== 0) {
-      if (!state.includes(clickedFilter)) {
-        setState((prevState) => {
+    if (filters.length !== 0) {
+      if (!filters.includes(clickedFilter)) {
+        setFilters((prevState) => {
           return [...prevState, clickedFilter];
         });
       }
     } else {
-      setState([clickedFilter]);
+      setFilters([clickedFilter]);
     }
   };
 
+  /**
+   * This function removes filters from the array
+   * @param valueToRemove - string value
+   */
   const handleOnRemove = (valueToRemove: string) => {
-    setState(state.filter((el) => el !== valueToRemove));
+    setFilters(filters.filter((el) => el !== valueToRemove));
   };
 
+  /**
+   * This function sets the array to empty
+   */
   const handleOnClear = () => {
-    setState([]);
+    setFilters([]);
   };
 
   return (
     <div className="list-item__container">
-      <Filter
-        filters={state}
-        onRemove={handleOnRemove}
-        onClear={handleOnClear}
-      />
+      {filters.length ? <Filter
+          filters={filters}
+          onRemove={handleOnRemove}
+          onClear={handleOnClear}
+        />
+        : ''}
       {data.map((item) => (
         <div className="list-item__wrapper">
           <div className="list-item__copy">
